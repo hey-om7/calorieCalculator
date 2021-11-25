@@ -1,5 +1,6 @@
 import 'package:calorie_calc/age.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 
 int selection = -1;
 
@@ -128,6 +129,7 @@ class _GenderStfulState extends State<GenderStful> {
         GestureDetector(
           onTap: () {
             if (selection != -1) {
+              selection == 1 ? globals.isMale = true : null;
               Navigator.push(
                 context,
                 new MaterialPageRoute(

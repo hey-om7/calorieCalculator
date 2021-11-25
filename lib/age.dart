@@ -1,5 +1,6 @@
 import 'package:calorie_calc/weight.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 
 TextEditingController texteditingController = TextEditingController();
 
@@ -76,17 +77,20 @@ class _AgeStfulState extends State<AgeStful> {
         Spacer(),
         GestureDetector(
           onTap: () {
-            texteditingController.text.toString().length > 0
-                ? Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => Weight()))
-                : null;
+            if ((texteditingController.text.toString().length > 0) &&
+                (int.parse(texteditingController.text) > 0)) {
+              globals.age = int.parse(texteditingController.text);
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Weight()));
+            }
           },
           child: Container(
             margin: EdgeInsets.all(30),
             width: 195,
             height: 65,
             decoration: BoxDecoration(
-              color: texteditingController.text.toString().length > 0
+              color: texteditingController.text.toString().length > 0 &&
+                      (int.parse(texteditingController.text) > 0)
                   ? Color(0xff00CC9A)
                   : Color(0xffC4C4C4),
               borderRadius: BorderRadius.circular(20),

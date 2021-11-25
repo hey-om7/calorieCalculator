@@ -1,5 +1,6 @@
 import 'package:calorie_calc/finalResults.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 
 class Activity extends StatelessWidget {
   const Activity({Key? key}) : super(key: key);
@@ -95,14 +96,15 @@ class _ActivityStfulState extends State<ActivityStful> {
         Column(
           children: [
             PickItem('No exercise', 1),
-            PickItem('1/3 times per week', 2),
-            PickItem('3/5 times per week', 3),
-            PickItem('7 times per week', 4),
+            PickItem('1-3 days per week', 2),
+            PickItem('3-5 days per week', 3),
+            PickItem('7 days per week', 4),
           ],
         ),
         Spacer(),
         GestureDetector(
           onTap: () {
+            globals.activity = selection;
             selection != -1
                 ? Navigator.push(context,
                     new MaterialPageRoute(builder: (context) => FinalResults()))

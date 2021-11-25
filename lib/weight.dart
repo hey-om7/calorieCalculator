@@ -1,5 +1,6 @@
 import 'package:calorie_calc/height.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
 
 TextEditingController texteditingController = TextEditingController();
 
@@ -89,6 +90,7 @@ class _WeightStfulState extends State<WeightStful> {
         Spacer(),
         GestureDetector(
           onTap: () {
+            globals.weight = int.parse(texteditingController.text);
             texteditingController.text.toString().length > 0
                 ? Navigator.push(context,
                     new MaterialPageRoute(builder: (context) => Height()))

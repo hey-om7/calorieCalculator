@@ -1,11 +1,15 @@
+import 'package:calorie_calc/main.dart';
 import 'package:calorie_calc/welcome.dart';
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
+import 'resultCalc.dart';
 
 class FinalResults extends StatelessWidget {
   const FinalResults({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double AMR = resultCalc();
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -28,19 +32,18 @@ class FinalResults extends StatelessWidget {
             Spacer(),
             Column(
               children: [
-                results('To maintian weight', 235),
-                results('To maintian weight', 2425),
-                results('To maintian weight', 235),
-                results('To maintian weight', 235),
+                results('To maintian weight', AMR.round()),
+                results('Mild Weight Loss', AMR.round() - 250),
+                results('Weight Loss', AMR.round() - 500),
+                results('Extreme Weight Loss', AMR.round() - 1000),
               ],
             ),
             Spacer(),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => WelcomeScreen()));
+                globals.restart = true;
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => MyApp()));
               },
               child: Container(
                 margin: EdgeInsets.all(30),
